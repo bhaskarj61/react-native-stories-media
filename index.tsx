@@ -82,13 +82,14 @@ const Stories = (props: Props) => {
       <FlatList
         data={props.data}
         horizontal
+        showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.title}
         renderItem={({ item, index }) => (
           <View style={styles.boxStory}>
             <TouchableOpacity onPress={() => onStorySelect(index)}>
-              <View style={[styles.superCircle, props.containerAvatarStyle]}>
+              <View style={[ props.containerAvatarStyle]}>
                 <Image
-                  style={[styles.circle, props.avatarStyle]}
+                  style={[props.avatarStyle]}
                   source={{ uri: item.profile }}
                 />
               </View>
@@ -133,27 +134,18 @@ const Stories = (props: Props) => {
   );
 };
 
-const styles = new StyleSheet.create({
+const styles = StyleSheet.create({
   boxStory: {
     marginLeft: 15,
   },
-  ItemSeparator: { height: 1, backgroundColor: "#ccc" },
+  ItemSeparator: { height: 1},
   container: {
     flex: 1,
-    backgroundColor: "rgba(255,255,255,255)",
     paddingBottom: 5,
-  },
-  circle: {
-    width: 50,
-    height: 50,
-    borderRadius: 60,
-    borderWidth: 3,
-    borderColor: "#FFF",
   },
   superCircle: {
     borderWidth: 3,
-    borderColor: "blue",
-    borderRadius: 60,
+    borderColor: '#FF8E4F',
   },
   modal: {
     flex: 1,
